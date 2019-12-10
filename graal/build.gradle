@@ -1,8 +1,0 @@
-dependencies {
-    compileOnly project(":inject-java")
-    compile project(":inject")
-    compile dependencyVersion("jackson.databind")
-    testCompile project(":inject-java")
-    testCompile project(":http")
-    testCompile project(":inject-java-test")
-}

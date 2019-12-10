@@ -1,7 +1,0 @@
-dependencies {
-    compileOnly project(":inject-java")
-
-    compile project(":runtime")
-    compile dependencyVersion("methvin.directory-watcher")
-    compile dependencyVersion("jna")
-}
