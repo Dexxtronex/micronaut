@@ -1,0 +1,120 @@
+openapi: 3.0.1
+info:
+  title: the title
+  description: My API
+  contact:
+    name: Fred
+    url: http://gigantic-server.com
+    email: Fred@gigagantic-server.com
+  license:
+    name: Apache 2.0
+    url: http://foo.bar
+  version: "0.0"
+externalDocs:
+  description: definition docs desc
+servers:
+- url: http://foo
+  description: server 1
+  variables:
+    var1:
+      description: var 1
+      default: "1"
+    var2:
+      description: var 2
+      default: "1"
+security:
+- req 1:
+  - a
+  - b
+- req 2:
+  - b
+  - c
+tags:
+- name: Tag 1
+  description: desc 1
+  externalDocs:
+    description: docs desc
+- name: Tag 2
+  description: desc 2
+  externalDocs:
+    description: docs desc 2
+- name: Tag 3
+paths:
+  /hello/{name}:
+    get:
+      operationId: hello
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        default:
+          content:
+            text/plain:
+              schema:
+                type: string
+  /prueba/{name}:
+    get:
+      operationId: prueba
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        default:
+          content:
+            text/plain:
+              schema:
+                type: string
+  /employee:
+    get:
+      operationId: getEmployee
+      parameters: []
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /employee/{name}:
+    get:
+      operationId: getEmployee
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /message:
+    get:
+      operationId: message
+      parameters: []
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
